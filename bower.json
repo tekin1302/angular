@@ -1,0 +1,27 @@
+{
+  "name": "angular-example",
+  "version": "0.0.0",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+    "src/main/webapp/resources"
+  ],
+  "dependencies": {
+    "angular": "~1.3.10",
+    "angular-animate": "~1.3.10",
+    "angular-locale": "~0.1.9",
+    "angular-mocks": "~1.3.10",
+    "angular-route": "~1.3.10",
+    "angular-touch": "~1.3.10",
+    "bootstrap": "~3.3.2",
+    "angular-resource": "~1.3.10"
+  },
+  "authors": [
+    "tekin1302 <tekin1302@yahoo.com>"
+  ]
+}

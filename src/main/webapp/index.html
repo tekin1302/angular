@@ -1,0 +1,37 @@
+<html>
+<head>
+
+    <!--
+    This element tells mobile browsers to display the content
+    actual size. Without the meta element, many mobile browsers will display the content as though it were intended only for a
+    desktop and expect the user to zoom in to see any detail. In short, you should always add a meta element like the one in the
+    listing when targeting mobile devices.
+    -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <script src="/resources/angular/angular.min.js"></script>
+    <script src="/resources/angular-resource/angular-resource.min.js"></script>
+    <script src="/resources/angular-route/angular-route.min.js"></script>
+    <script src="/ngmodules/app.js"></script>
+    <script src="/controllers/formController.js"></script>
+    <script src="/controllers/todoController.js"></script>
+
+    <link rel="stylesheet" href="/resources/bootstrap/dist/css/bootstrap.css"/>
+    <link rel="stylesheet" href="/resources/bootstrap/dist/css/bootstrap-theme.css"/>
+</head>
+
+<body ng-app="angularTestModule">
+<h1>Titlu test</h1>
+
+<a href="#/form"><button class="btn btn-info">Link form</button></a>
+<a href="#/todo"><button class="btn btn-info">TO DO</button></a>
+<a href="#/sports"><button class="btn btn-info">Sports store</button></a>
+<a href="#/bootstrap-index"><button class="btn btn-info">Bootstrap index</button></a>
+<br/>
+<br/>
+
+<div ng-view>
+
+</div>
+</body>
+</html>

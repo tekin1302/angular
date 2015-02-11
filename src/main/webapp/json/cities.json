@@ -1,0 +1,22 @@
+[
+  {
+    "id":1,
+    "country_id":1,
+    "name": "Iasi"
+  },
+  {
+    "id":2,
+    "country_id":1,
+    "name": "Constanta"
+  },
+  {
+    "id":3,
+    "country_id":2,
+    "name": "Manchester"
+  },
+  {
+    "id":4,
+    "country_id":2,
+    "name": "Liverpool"
+  }
+]

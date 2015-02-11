@@ -1,0 +1,55 @@
+<form name="mainForm">
+    <input type="hidden" ng-model="person.id"/>
+
+    First name:* <input name="firstName" ng-model="person.firstName" required ng-pattern="namePattern"/>
+    <span ng-show="mainForm.firstName.$dirty && mainForm.firstName.$error.pattern">
+        Only letters, 4-20
+    </span>
+    <span ng-show="mainForm.firstName.$dirty && mainForm.firstName.$error.required">
+        Required
+    </span>
+
+    <br/>
+    Last name:* <input name="lastName" ng-model="person.lastName" required ng-pattern="namePattern"/>
+    <span ng-show="mainForm.lastName.$dirty && mainForm.lastName.$error.pattern">
+        Only letters, 4-20
+    </span>
+    <span ng-show="mainForm.lastName.$dirty && mainForm.lastName.$error.required">
+        Required
+    </span>
+
+    <br/>
+    E-mail:* <input name="email" ng-model="person.email" required type="email"/>
+    <span ng-show="mainForm.email.$dirty && mainForm.email.$error.email">
+        Not a valid email
+    </span>
+
+    <br/>
+    Phone number: <input name="phone" ng-model="person.phone" ng-pattern="phonePattern"/>
+    <span ng-show="mainForm.phone.$dirty && mainForm.phone.$error.pattern">
+        Not a valid phone number
+    </span>
+    <br/>
+    Country:
+    <select name="country" ng-model="person.country" ng-options="c as c.name for c in countries" required>
+        <option value="">Alegeti</option>
+    </select>
+    <span ng-show="mainForm.country.$dirty && mainForm.country.$error.required">
+        Country required
+    </span>
+    <br/>
+    City:
+    <select name="city" ng-model="person.city" ng-options="c as c.name for c in cities | filter: {country_id : person.country.id}">
+        <option value="">Alegeti</option>
+    </select>
+    <br/>
+    Age:
+    <input name="age" ng-model="person.age" ng-change="isAgeOk(person.age)"/>
+    <span ng-show="mainForm.age.$dirty && mainForm.age.$error.ageValid">Not ok</span>
+    <br/>
+
+    <br/>
+    <button ng-disabled = "mainForm.$invalid" ng-click="save()">Save</button>
+    <br/>
+    {{personS}}
+</form>
