@@ -1,4 +1,4 @@
-var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute'])
+var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute', 'customFilters'])
         .config(function ($routeProvider) {
             $routeProvider.when("/form",
                 {

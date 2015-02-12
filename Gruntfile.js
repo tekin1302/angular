@@ -17,7 +17,9 @@ module.exports = function (grunt) {
                     livereload: 35729
                 },
                 files: [
-                    'src/main/webapp/**/*.{html,js,css}'
+                    'src/main/webapp/**/*.html',
+                    'src/main/webapp/**/*.css',
+                    'src/main/webapp/**/*.js'
                 ]
             }
         },
@@ -27,6 +29,12 @@ module.exports = function (grunt) {
                     context: '/hello',
                     host: 'localhost',
                     port: 8080,
+                    https: false,
+                    changeOrigin: false
+                }, {
+                    context: '/products',
+                    host: 'localhost',
+                    port: 5500,
                     https: false,
                     changeOrigin: false
                 }

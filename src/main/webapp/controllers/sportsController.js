@@ -1,15 +1,47 @@
-myModule.controller("sportsController", function($scope, $http){
+myModule
+    .constant("productListActiveClass", "btn-primary")
+    .constant("productListPageCount", 3)
+    .constant("dataUrl", "http://localhost:9001/products")
+    .controller("sportsController", function($scope, $http, dataUrl){
 
-    $scope.data = {
-        products: [
-            { name: "Product #1", description: "A product",
-                category: "Category #1", price: 100 },
-            { name: "Product #2", description: "A product",
-                category: "Category #1", price: 110 },
-            { name: "Product #3", description: "A product",
-                category: "Category #2", price: 210 },
-            { name: "Product #4", description: "A product",
-                category: "Category #3", price: 202 }]
-    };
+        $scope.data = {};
 
-});
+        $scope.loadData = function() {
+            $scope.data.error = null;
+            $http.get(dataUrl).success(function (data) {
+                $scope.data.products = data;
+            })
+                .error(function (error) {
+                    $scope.data.error = error;
+                });
+        }
+        $scope.loadData();
+})
+    .controller("productListController", function($scope, productListActiveClass, productListPageCount) {
+
+        $scope.selectedPage = 1;
+        $scope.pageSize = productListPageCount;
+
+        var selectedCategory = null;
+        $scope.selectCategory = function (newCategory) {
+            selectedCategory = newCategory;
+            $scope.selectedPage = 1;
+        }
+
+        $scope.selectPage = function(newPage) {
+            $scope.selectedPage = newPage;
+        }
+        $scope.categoryFilterFn = function (product) {
+            return selectedCategory == null ||
+                product.category == selectedCategory;
+        }
+        $scope.getCategoryClass = function(category) {
+            return selectedCategory == category ? productListActiveClass : "";
+        }
+        $scope.getPageClass = function(page) {
+            return $scope.selectedPage == page ? "productListActiveClass" : "";
+        }
+    })
+
+;
+
