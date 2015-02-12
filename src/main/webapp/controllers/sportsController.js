@@ -2,10 +2,10 @@ myModule
     .constant("productListActiveClass", "btn-primary")
     .constant("productListPageCount", 3)
     .constant("dataUrl", "http://localhost:9001/products")
-    .controller("sportsController", function($scope, $http, dataUrl){
+    .constant("orderUrl", "http://localhost:9001/orders")
+    .controller("sportsController", function($scope, $http, dataUrl, orderUrl, cartFactory, $location){
 
         $scope.data = {};
-
         $scope.loadData = function() {
             $scope.data.error = null;
             $http.get(dataUrl).success(function (data) {
@@ -16,7 +16,22 @@ myModule
                 });
         }
         $scope.loadData();
-})
+
+        $scope.sendOrder = function (shippingDetails) {
+            var order = angular.copy(shippingDetails);
+            order.products = cartFactory.getProducts();
+            $http.post(orderUrl, order)
+                .success(function (data) {
+                    $scope.data.orderId = data.id;
+                    cartFactory.getProducts().length = 0;
+                })
+                .error(function (error) {
+                    $scope.data.orderError = error;
+                }).finally(function () {
+                    $location.path("/complete");
+                });
+        }
+    })
     .controller("productListController", function($scope, productListActiveClass, productListPageCount, cartFactory) {
 
         $scope.selectedPage = 1;
