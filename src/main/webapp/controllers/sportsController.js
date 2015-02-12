@@ -17,7 +17,7 @@ myModule
         }
         $scope.loadData();
 })
-    .controller("productListController", function($scope, productListActiveClass, productListPageCount) {
+    .controller("productListController", function($scope, productListActiveClass, productListPageCount, cartFactory) {
 
         $scope.selectedPage = 1;
         $scope.pageSize = productListPageCount;
@@ -40,6 +40,25 @@ myModule
         }
         $scope.getPageClass = function(page) {
             return $scope.selectedPage == page ? "productListActiveClass" : "";
+        }
+        $scope.addProductToCart = function (product) {
+            cartFactory.addProduct(product.id, product.name, product.price);
+        }
+    })
+
+    .controller("checkoutController", function($scope, cartFactory) {
+        $scope.cartData = cartFactory.getProducts();
+
+        $scope.total = function() {
+            var total = 0;
+            for (i=0; i<$scope.cartData.length; i++) {
+                total += ($scope.cartData[i].price * $scope.cartData[i].count);
+            }
+            return total;
+        }
+
+        $scope.remove = function (id) {
+            cartFactory.removeProduct(id);
         }
     })
 

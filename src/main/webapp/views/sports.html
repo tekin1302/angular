@@ -1,7 +1,9 @@
 <div ng-controller="productListController">
     <div class="navbar navbar-inverse">
-        <a class="navbar-brand" href="#">SPORTS STORE</a>
+        <a class="navbar-brand" href="/#/sports">SPORTS STORE</a>
+        <cart-summary ></cart-summary>
     </div>
+
     <div class="alert alert-danger" ng-show="data.error">
         Error ({{data.error.status}}). The product data was not loaded.
         <span ng-click="loadData()" class="alert-link" style="cursor: pointer;">Click here to try again</span>
@@ -20,6 +22,7 @@
                     {{item.price | currency}}
                 </span>
                 </h3>
+                <button ng-click="addProductToCart(item)" class="btn btn-success pull-right">Add to cart</button>
                 <span class="lead">{{item.description}}</span>
             </div>
             <div class="pull-right btn-group">

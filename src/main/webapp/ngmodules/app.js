@@ -1,4 +1,4 @@
-var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute', 'customFilters'])
+var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute', 'customFilters', 'cartModule'])
         .config(function ($routeProvider) {
             $routeProvider.when("/form",
                 {
@@ -18,6 +18,21 @@ var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute', 'cu
                 {
                     templateUrl: '/views/sports.html',
                     controller: 'sportsController'
+                });
+            $routeProvider.when("/checkout",
+                {
+                    templateUrl: '/views/checkoutSummary.html',
+                    controller: 'checkoutController'
+                });
+            $routeProvider.when("/placeorder",
+                {
+                    templateUrl: '/views/placeOrder.html',
+                    controller: 'checkoutController'
+                });
+            $routeProvider.when("/complete",
+                {
+                    templateUrl: '/views/thankYou.html',
+                    controller: 'checkoutController'
                 });
         })
         .directive('smartFloat', function() {
