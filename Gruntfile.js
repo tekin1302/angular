@@ -43,6 +43,12 @@ module.exports = function (grunt) {
                     port: 5500,
                     https: false,
                     changeOrigin: false
+                }, {
+                    context: '/users/login',
+                    host: 'localhost',
+                    port: 5500,
+                    https: false,
+                    changeOrigin: false
                 }
             ],
             options: {

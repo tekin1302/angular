@@ -16,7 +16,7 @@ var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute', 'cu
                 });
             $routeProvider.when("/sports",
                 {
-                    templateUrl: '/views/sports.html',
+                    templateUrl: '/views/sports.html'
                 });
             $routeProvider.when("/checkout",
                 {
@@ -25,11 +25,11 @@ var myModule = angular.module("angularTestModule", ['ngResource', 'ngRoute', 'cu
                 });
             $routeProvider.when("/placeorder",
                 {
-                    templateUrl: '/views/placeOrder.html',
+                    templateUrl: '/views/placeOrder.html'
                 });
             $routeProvider.when("/complete",
                 {
-                    templateUrl: '/views/thankYou.html',
+                    templateUrl: '/views/thankYou.html'
                 });
         })
         .directive('smartFloat', function() {
